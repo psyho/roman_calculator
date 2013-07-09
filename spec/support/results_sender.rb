@@ -11,7 +11,7 @@ class ResultsSender
   def publish(team, score)
     EM.run do
       client = Faye::Client.new("http://#{server}/faye")
-      msg = client.publish('/scores', team: team, score: score)
+      msg = client.publish('/teams', name: team, score: score)
       msg.callback do
         EM.stop
       end
