@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+require_relative 'checker_examples'
+
 SERVER = 'localhost'
 
 class CalculatorRunner
@@ -10,6 +12,8 @@ class CalculatorRunner
   attr_reader :server, :team_name
 
   def initialize(server, team_name)
+    @team_name = team_name
+    @server = server
   end
 
   def run
@@ -31,8 +35,7 @@ class CalculatorRunner
   end
 
   def examples
-    [["I", "I", "II"],
-     ["IV", "V", "IX"]]
+    CHECKER_EXAMPLES
   end
 
   def solved
@@ -44,7 +47,7 @@ class CalculatorRunner
   end
 
   def send_results
-    puts "Team #{team_name} has solved #{solved.count} examples"
+    puts "Team #{team_name} has solved #{solved.count}/#{examples.count} examples"
   end
 end
 
