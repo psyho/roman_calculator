@@ -28,7 +28,7 @@ class CalculatorRunner
   def results
     examples.map do |x, y, expected|
       actual = x.to_roman + y.to_roman
-      [x, y, expected, actual]
+      [x, y, expected.to_roman, actual]
     end
   end
 
