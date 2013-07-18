@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-require_relative 'support/calculator_runner'
+require_relative 'support/checker'
 
 describe "Roman Calculator Checker" do
   if TEAM_NAME
-    calculator_examples = CalculatorRunner.run(SERVER, TEAM_NAME)
+    calculator_examples = Checker.run(SERVER, TEAM_NAME)
 
-    calculator_examples.each do |x, y, expected, actual|
-      it "sums #{x} and #{y} to #{expected}" do
-        actual.should == expected
+    calculator_examples.each do |value, expected|
+      it "converts #{value} to #{expected}" do
+        value.to_roman.to_i.should == expected
       end
     end
   else

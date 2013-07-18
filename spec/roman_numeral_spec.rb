@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RomanNumeral do
-  it "sums I + I to II" do
-    expect('I'.to_roman + 'I'.to_roman).to eq('II'.to_roman)
+  it "converts I to 1" do
+    "I".to_roman.to_i.should == 1
   end
 end
